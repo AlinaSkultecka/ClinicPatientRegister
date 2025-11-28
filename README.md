@@ -14,6 +14,7 @@ The application connects to a SQL Server database and allows to manage patients,
 
 ### Entity Relationship Diagram (ERD)
 
-<img width="1351" height="728" alt="Clinic" src="https://github.com/user-attachments/assets/124619a2-2213-4d1b-9f11-5117aa810818" />
+<img width="1351" height="728" alt="Clinic" src="https://github.com/user-attachments/assets/007960c6-7d08-444c-a889-3e2871d5810c" />
+
 
 

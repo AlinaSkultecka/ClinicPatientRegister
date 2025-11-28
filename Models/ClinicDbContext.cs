@@ -31,7 +31,7 @@ public partial class ClinicDbContext : DbContext
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)   // Add your configuration file name "Server=(localdb)\\MSSQLLocalDB;Database=YOUR_DB_NAME;Trusted_Connection=True"
                 .Build();
 
             optionsBuilder.UseSqlServer(config.GetConnectionString("MyDb"));

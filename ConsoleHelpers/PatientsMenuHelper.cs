@@ -1,9 +1,9 @@
 ﻿using ClinicPatientRegister_v2.Models;
 using System;
 
-namespace ClinicPacientRegister_v2.ConsoleHelpers
+namespace ClinicPatientRegister_v2.ConsoleHelpers
 {
-    public class PatientMenuHelper
+    public class PatientsMenuHelper
     {
         public void ListPatients(ClinicDbContext db)
         {
@@ -26,22 +26,22 @@ namespace ClinicPacientRegister_v2.ConsoleHelpers
             Console.WriteLine("=== ADD PATIENT ===");
 
             Console.Write("Personal number (12 digits): ");
-            string pn = Console.ReadLine();
+            string pn = Console.ReadLine() ?? string.Empty;
 
             Console.Write("First name: ");
-            string fn = Console.ReadLine();
+            string fn = Console.ReadLine() ?? string.Empty;
 
             Console.Write("Last name: ");
-            string ln = Console.ReadLine();
+            string ln = Console.ReadLine() ?? string.Empty;
 
             Console.Write("Home address: ");
-            string addr = Console.ReadLine();
+            string addr = Console.ReadLine() ?? string.Empty;
 
             Console.Write("Phone: ");
-            string phone = Console.ReadLine();
+            string phone = Console.ReadLine() ?? string.Empty;
 
             Console.Write("Email: ");
-            string email = Console.ReadLine();
+            string email = Console.ReadLine() ?? string.Empty;
 
             var newPatient = new Patient
             {
@@ -51,6 +51,7 @@ namespace ClinicPacientRegister_v2.ConsoleHelpers
                 HomeAddress = addr,
                 Phone = phone,
                 Email = email
+                // DateOfBirth is computed in DB from PersonalNumber12, so we don't set it here
             };
 
             db.Patients.Add(newPatient);
@@ -85,23 +86,23 @@ namespace ClinicPacientRegister_v2.ConsoleHelpers
             Console.WriteLine("\nLeave field empty to keep old value.\n");
 
             Console.Write($"First name ({p.FirstName}): ");
-            string fn = Console.ReadLine();
+            string fn = Console.ReadLine() ?? string.Empty;
             if (!string.IsNullOrWhiteSpace(fn)) p.FirstName = fn;
 
             Console.Write($"Last name ({p.LastName}): ");
-            string ln = Console.ReadLine();
+            string ln = Console.ReadLine() ?? string.Empty;
             if (!string.IsNullOrWhiteSpace(ln)) p.LastName = ln;
 
             Console.Write($"Address ({p.HomeAddress}): ");
-            string addr = Console.ReadLine();
+            string addr = Console.ReadLine() ?? string.Empty;
             if (!string.IsNullOrWhiteSpace(addr)) p.HomeAddress = addr;
 
             Console.Write($"Phone ({p.Phone}): ");
-            string phone = Console.ReadLine();
+            string phone = Console.ReadLine() ?? string.Empty;
             if (!string.IsNullOrWhiteSpace(phone)) p.Phone = phone;
 
             Console.Write($"Email ({p.Email}): ");
-            string email = Console.ReadLine();
+            string email = Console.ReadLine() ?? string.Empty;
             if (!string.IsNullOrWhiteSpace(email)) p.Email = email;
 
             db.SaveChanges();

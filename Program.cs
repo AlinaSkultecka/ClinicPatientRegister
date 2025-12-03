@@ -50,7 +50,7 @@ namespace ClinicPacientRegister_v2
         static void PatientsMenu()
         {
             using var db = new ClinicDbContext();
-            var helper = new ConsoleHelpers.PatientMenuHelper();
+            var helper = new PatientsMenuHelper();
 
             while (true)
             {
@@ -78,44 +78,89 @@ namespace ClinicPacientRegister_v2
 
         static void NursesMenu()
         {
-            Console.Clear();
-            Console.WriteLine("=== NURSES MENU ===");
-            Console.WriteLine("1. List all nurses");
-            Console.WriteLine("2. Add nurse");
-            Console.WriteLine("3. Edit nurse");
-            Console.WriteLine("4. Delete nurse");
-            Console.WriteLine("0. Back");
-            Console.WriteLine("-------------------------");
-            Console.Write("Enter choice: ");
-            Console.ReadLine(); // Placeholder
+            using var db = new ClinicDbContext();
+            var helper = new NursesMenuHelper();
+
+            while (true)
+            {
+                var options = new List<string>
+                {
+                    "List all nurses",
+                    "Add nurse",
+                    "Edit nurse",
+                    "Delete nurse",
+                    "Back"
+                };
+
+                int choice = MenuSelector.Show("              NURSE MENU", options);
+
+                switch (choice)
+                {
+                    case 0: helper.ListNurses(db); break;
+                    case 1: helper.AddNurse(db); break;
+                    case 2: helper.EditNurse(db); break;
+                    case 3: helper.DeleteNurse(db); break;
+                    case 4: return;
+                }
+            }
         }
 
         static void DoctorsMenu()
         {
-            Console.Clear();
-            Console.WriteLine("=== DOCTORS MENU ===");
-            Console.WriteLine("1. List all doctors");
-            Console.WriteLine("2. Add doctor");
-            Console.WriteLine("3. Edit doctor");
-            Console.WriteLine("4. Delete doctor");
-            Console.WriteLine("0. Back");
-            Console.WriteLine("-------------------------");
-            Console.Write("Enter choice: ");
-            Console.ReadLine(); // Placeholder
+            using var db = new ClinicDbContext();
+            var helper = new DoctorsMenuHelper();
+
+            while (true)
+            {
+                var options = new List<string>
+                {
+                    "List all doctors",
+                    "Add doctor",
+                    "Edit doctor",
+                    "Delete doctor",
+                    "Back"
+                };
+
+                int choice = MenuSelector.Show("              DOCTOR MENU", options);
+
+                switch (choice)
+                {
+                    case 0: helper.ListDoctors(db); break;
+                    case 1: helper.AddDoctor(db); break;
+                    case 2: helper.EditDoctor(db); break;
+                    case 3: helper.DeleteDoctor(db); break;
+                    case 4: return;
+                }
+            }
         }
 
         static void AppointmentsMenu()
         {
-            Console.Clear();
-            Console.WriteLine("=== APPOINTMENTS MENU ===");
-            Console.WriteLine("1. List appointments");
-            Console.WriteLine("2. Book new appointment");
-            Console.WriteLine("3. Edit appointment");
-            Console.WriteLine("4. Cancel appointment");
-            Console.WriteLine("0. Back");
-            Console.WriteLine("-------------------------");
-            Console.Write("Enter choice: ");
-            Console.ReadLine(); // Placeholder
+            using var db = new ClinicDbContext();
+            var helper = new AppointmentsMenuHelper();
+
+            while (true)
+            {
+                var options = new List<string>
+                {
+                    "List appointments",
+                    "Book new appointment",
+                    "Edit appointment",
+                    "Cancel appointment",
+                    "Back"
+                };
+
+                int choice = MenuSelector.Show("           APPOINTMENTS MENU", options);
+
+                switch (choice)
+                {
+                    case 0: helper.ListAppointments(db); break;
+                    case 1: helper.BookAppointment(db); break;
+                    case 2: helper.EditAppointment(db); break;
+                    case 3: helper.CancelAppointment(db); break;
+                    case 4: return;
+                }
+            }
         }
     }
 }
